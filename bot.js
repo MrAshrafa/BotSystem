@@ -94,7 +94,7 @@ msg = parseInt();
 message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
 message.channel.sendMessage("", {embed: {
 title: "```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```"
-color: 0x06DF00,
+color: 00055,
 footer: {
   
 }
