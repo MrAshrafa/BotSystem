@@ -187,4 +187,86 @@ client.on('message',async message => {
   }
 });
 
+client.on("message", message => {
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "clear")) {
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
+        var msg;
+        msg = parseInt();
+      
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+      title: "``تــم مسح الشات ``",
+       color: 0x06DF00,
+       footer: {
+});
+  
+  
+     
+client.on('message', message => {
+     if (message.content === (prefix + "bot")) {
+         if(!message.channel.guild) return;
+     let embed = new Discord.RichEmbed()
+  .setColor("#8650a7")
+  .addField("** :white_check_mark: Servers: **" , client.guilds.size)
+  .addField("** :white_check_mark: Users: **" , client.users.size)
+  .addField("** :white_check_mark: Channels: **" , client.channels.size)
+    .addField("** :rocket: Ping **" , Date.now() - message.createdTimestamp)
+    .setTimestamp()
+  message.channel.sendEmbed(embed);
+    }
+});
+              
+client.on('message', function(msg) {
+  if(msg.content.startsWith (prefix  + 'server')) {
+    if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
+    const millis = new Date().getTime() - msg.guild.createdAt.getTime();
+    const noww = new Date();
+    const createdAt = millis / 1000 / 60 / 60 / 24;
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setThumbnail(msg.guild.iconURL)
+    .addField(`${msg.guild.name}`,`\`\`منذ ${createdAt.toFixed(0)} يوما \`\``)
+    .addField(':earth_africa: ** موقع السيرفر**',`**[ ${msg.guild.region} ]**`,true)
+    .addField(':military_medal:** الرتب**',`**[ ${msg.guild.roles.size} ]**`,true)
+    .addField(':bust_in_silhouette:** عدد الاعضاء**',`**[ ${msg.guild.memberCount} ]**`,true)
+    .addField(':white_check_mark:** عدد الاعضاء الاونلاين**',`**[ ${msg.guild.members.filter(m=>m.presence.status == 'online').size} ]**`,true)
+    .addField(':pencil:** الرومات الكتابية**',`**[ ${msg.guild.channels.filter(m => m.type === 'text').size} ]**`,true)
+    .addField(':loud_sound:** رومات الصوت**',`**[ ${msg.guild.channels.filter(m => m.type === 'voice').size} ]**`,true)
+    .addField(':crown:** صاحب السيرفر**',`**[ ${msg.guild.owner} ]**`,true)
+    .addField(':id:** ايدي السيرفر**',`**[ ${msg.guild.id} ]**`,true)
+    msg.channel.send({embed:embed});
+  }
+});
+              
+client.on('message', message => {
+if(message.content == (prefix + "admin bot")) {
+         if(!message.author.id === '523473658963034127') return;
+var gimg;
+var gname;
+var gmemb;
+var gbots;
+var groles;
+var servers = client.guilds;
+servers.forEach((g)=>{
+gname = g.name;
+gimg = g.iconURL;
+gmemb = g.members.size;
+gbots = g.members.filter(m=>m.bot).size;
+groles = g.roles.map(r=> {return r.name});
+let serv = new Discord.RichEmbed()
+.setAuthor(gname,gimg)
+.setThumbnail(gimg)
+.addField('Server bots',gbots)
+.addField('Server Member Count',gmemb = g.members.size)
+.setColor('RANDOM')
+message.channel.send(`
+Server Name : **${gname}**
+Server MemberCount : **${gmemb} **
+        `);
+      message.channel.sendEmbed(serv);
+}) 
+}
+});  
+ 
 client.login(process.env.BOT_TOKEN)
