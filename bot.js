@@ -121,14 +121,15 @@ client.on('message',async message => {
     var two = Math.floor(Math.random() * 9) + 1;
     var three = Math.floor(Math.random() * 9) + 1;
     var four = Math.floor(Math.random() * 9) + 1;
+    var five = Math.floor(Math.randim() * 9) +1;
 
-    var number = `${one}${two}${three}${four}`;
+    var number = `${one}${two}${three}${four}${five}`;
     
     message.channel.send(`**:heavy_dollar_sign:| \`${number}\`, أكتب الرقم للأستمرار**`).then(m => {
       message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(c => {
         if(c.first().content === number) {
           m.delete();
-          message.channel.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
+          message.author.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
           credits[author].credits += (-balance);
           credits[mention.id].credits += (+balance);
           fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
@@ -180,8 +181,8 @@ client.on('message',async message => {
 
     setTimeout(() => {
       cool.shift(message.author.id);
-      message.author.send("**:atm: | \`Daily\`, يمكنك الحصول على الكردت المجانية الان**").catch();
-    }, ms("1s"));
+      message.author.send("**:atm: | \`Daily\`, تم اكمال يوم يمكن الان حصول على كردت**").catch();
+    }, ms("1d"));
   }
 });
 
