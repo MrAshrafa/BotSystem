@@ -132,7 +132,6 @@ client.on('message',async message => {
           message.channel.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
           credits[author].credits += (-balance);
           credits[mention.id].credits += (+balance);
-          message.mention.id.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
           fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
         } else if(c.first().content !== number) {
           m.delete();
