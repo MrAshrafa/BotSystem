@@ -181,7 +181,7 @@ client.on('message',async message => {
     setTimeout(() => {
       cool.shift(message.author.id);
       message.author.send("**:atm: | \`Daily\`, يمكنك الحصول على الكردت المجانية الان**").catch();
-    }, ms("1d"));
+    }, ms("1s"));
   }
 });
 
