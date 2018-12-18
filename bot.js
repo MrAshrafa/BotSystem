@@ -129,7 +129,7 @@ client.on('message',async message => {
       message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(c => {
         if(c.first().content === number) {
           m.delete();
-          message.${mention}.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
+          message.mention.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
           credits[author].credits += (-balance);
           credits[mention.id].credits += (+balance);
           fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
